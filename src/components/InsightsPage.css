@@ -1,0 +1,167 @@
+.insights-page { animation: fadeInUp .3s ease; }
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+.insights-bottom-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-5);
+}
+
+/* Card */
+.insight-card {
+  background: var(--bg-surface); 
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-lg); 
+  padding: var(--space-6);
+  transition: border-color var(--transition); animation: fadeInUp .4s ease both;
+}
+.insight-card:hover { border-color: rgba(212,168,75,.2); }
+
+/* Tag pills */
+.insight-tag { 
+  display:inline-block; 
+  font-size:10px; 
+  font-weight:700; 
+  letter-spacing:.1em; 
+  text-transform:uppercase; 
+  padding:3px 10px; 
+  border-radius:20px; 
+  margin-bottom:var(--space-3); }
+
+.insight-tag--warning { 
+  background:rgba(245,166,35,.15); 
+  color:var(--orange); }
+
+.insight-tag--success { 
+  background:var(--green-dim); 
+  color:var(--green); }
+
+.insight-tag--info    { 
+  background:var(--blue-dim);  
+  color:var(--blue); }
+
+.insight-tag--purple  { 
+  background:var(--purple-dim); 
+  color:var(--purple); }
+
+/* Card content */
+.insight-card__title { 
+  font-size:14px; 
+  font-weight:600; 
+  color:var(--text-primary); 
+  margin-bottom:var(--space-2); }
+
+.insight-card__value { 
+  font-size:24px; 
+  font-weight:600; 
+  color:var(--text-primary); 
+  margin:var(--space-3) 0 var(--space-2); 
+  letter-spacing:-.02em; }
+
+.insight-card__body  { 
+  font-size:12px; 
+  color:var(--text-secondary); 
+  line-height:1.6; }
+
+/* Monthly bars */
+.month-bars { 
+  display:flex; 
+  flex-direction:column; 
+  gap:var(--space-3); }
+
+.month-row  { 
+  display:flex; 
+  align-items:center; 
+  gap:var(--space-3); }
+
+.month-row__label { 
+  font-size:12px; 
+  color:var(--text-muted); 
+  width:34px; 
+  flex-shrink:0; }
+
+.month-row__track { 
+  flex:1; height:6px; 
+  background:var(--bg-elevated); 
+  border-radius:3px; 
+  overflow:hidden; }
+
+.month-row__fill  { 
+  height:100%; 
+  border-radius:3px; 
+  background:linear-gradient(90deg,var(--gold),var(--gold-light)); 
+  transition:width .8s cubic-bezier(.4,0,.2,1); 
+}
+
+.month-row__value { 
+  font-family:var(--font-mono); 
+  font-size:11px; 
+  color:var(--text-muted); 
+  width:68px; text-align:right; 
+  flex-shrink:0; }
+
+/* Category list */
+.cat-list { 
+  display:flex; 
+  flex-direction:column; }
+
+.cat-row  { 
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  padding:var(--space-3) 0; 
+  border-bottom:1px solid var(--bg-border); }
+
+.cat-row:last-child { 
+  border-bottom:none; }
+
+.cat-row__left  { 
+  display:flex; 
+  align-items:center; 
+  gap:var(--space-3); }
+
+.cat-row__emoji { 
+  width:32px; 
+  height:32px; 
+  border-radius:var(--radius-sm); 
+  display:flex; align-items:center; 
+  justify-content:center; 
+  font-size:15px; 
+  flex-shrink:0; }
+
+.cat-row__name  { 
+  font-size:13px; 
+  font-weight:500; 
+  color:var(--text-primary); }
+
+.cat-row__pct   { 
+  font-size:11px; 
+  color:var(--text-muted); }
+
+.cat-row__amount { 
+  font-family:var(--font-mono); 
+  font-size:13px; 
+  font-weight:600; 
+  color:var(--red); 
+  flex-shrink:0; }
+
+/* Responsive */
+@media (max-width: 1100px) { 
+  .insights-grid { 
+    grid-template-columns: repeat(2,1fr); 
+  } }
+
+@media (max-width: 1024px) { 
+  .insights-bottom-grid { 
+    grid-template-columns: 1fr; 
+  } }
+
+@media (max-width: 500px)  { 
+  .insights-grid { 
+    grid-template-columns: 1fr; 
+  } }

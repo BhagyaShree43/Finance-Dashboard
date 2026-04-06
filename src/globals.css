@@ -1,0 +1,197 @@
+/*
+   1. CSS Custom Properties (Design Tokens)
+   2. CSS Reset
+   3. Keyframe Animations
+   4. Scrollbar Customisation
+   5. Shared utility classes
+*/
+
+/* ── 1. DESIGN TOKENS ────────────────────────────────────────── */
+:root {
+  /* Background depth layers */
+  --bg-base:      #0b0f1a;
+  --bg-surface:   #111827;
+  --bg-elevated:  #1a2234;
+  --bg-border:    #1f2d45;
+
+  /* Brand accent: warm gold */
+  --gold:         #d4a84b;
+  --gold-light:   #f0c96e;
+  --gold-dim:     rgba(212, 168, 75, 0.15);
+
+  /* Text hierarchy */
+  --text-primary:   #e8eaf0;
+  --text-secondary: #8899b0;
+  --text-muted:     #4a5a72;
+
+  /* Semantic palette */
+  --green:       #2ecc8f;
+  --green-dim:   rgba(46, 204, 143, 0.12);
+  --red:         #e05c6f;
+  --red-dim:     rgba(224, 92, 111, 0.12);
+  --blue:        #4a90e2;
+  --blue-dim:    rgba(74, 144, 226, 0.12);
+  --purple:      #9b6dff;
+  --purple-dim:  rgba(155, 109, 255, 0.15);
+  --orange:      #f5a623;
+  --teal:        #1abc9c;
+
+  /* Typography */
+  --font-display: 'DM Serif Display', serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Spacing (4px base unit) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  /* Elevation */
+  --shadow-card:  0 4px 24px rgba(0,0,0,0.4);
+  --shadow-gold:  0 0 24px rgba(212,168,75,0.15);
+  --shadow-modal: 0 20px 60px rgba(0,0,0,0.6);
+
+  /* Transitions */
+  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+
+/* ── 2. RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Subtle grain texture for tactile depth */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+ul, ol  { list-style: none; }
+img     { max-width: 100%; display: block; }
+button  { font-family: var(--font-body); cursor: pointer; }
+a       { text-decoration: none; color: inherit; }
+canvas  { display: block; max-width: 100%; }
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-border) var(--bg-base);
+}
+
+
+/* ── 3. KEYFRAMES ─────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ── 4. WEBKIT SCROLLBAR ─────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--bg-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+
+/* ── 5. SHARED UTILITIES ─────────────────────────────────────── */
+
+/* Section heading pattern (used in Transactions + Insights pages) */
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+.section-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Primary action button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #0b0f1a;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 9px 20px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+.btn-primary:hover  { opacity: 0.9; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+/* Secondary / ghost button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--radius-sm);
+  padding: 9px 16px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.btn-secondary:hover { color: var(--text-primary); border-color: var(--text-muted); }
+
+/* Mono helper */
+.font-mono { font-family: var(--font-mono); }

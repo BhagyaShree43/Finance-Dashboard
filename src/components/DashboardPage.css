@@ -1,0 +1,16 @@
+/* DashboardPage.css */
+.dashboard-page { animation: fadeInUp .3s ease; }
+
+.admin-banner {
+  display: flex; 
+  align-items: center; 
+  gap: var(--space-3);
+  background: var(--gold-dim); 
+  border: 1px solid rgba(212,168,75,.25);
+  border-radius: var(--radius-md); 
+  padding: var(--space-3) var(--space-5);
+  font-size: 13px; 
+  color: var(--gold); 
+  margin-bottom: var(--space-6);
+  animation: fadeInUp .3s ease;
+}
